@@ -3,7 +3,7 @@
   --black: hsl(0, 0%, 0%);
   --white: hsl(0, 0%, 100%);
   --very-dark-gray: hsl(0, 0%, 27%);
-  --hover-color: hsl(210, 25%, 35%)
+  --hover-color: hsl(70, 100%, 50%);
 }
 
 * {
@@ -83,10 +83,11 @@ a {
 
 .main__arrows path {
   stroke: var(--white);
-  transition: stroke .3s;
+  transition: all .3s;
 }
 
 .main__arrows:hover>path {
+  transform: scale(1.1);
   stroke: var(--hover-color)
 }
 
