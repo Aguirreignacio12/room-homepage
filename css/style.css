@@ -3,7 +3,8 @@
   --black: hsl(0, 0%, 0%);
   --white: hsl(0, 0%, 100%);
   --very-dark-gray: hsl(0, 0%, 27%);
-  --hover-color: hsl(70, 100%, 50%);
+  --hover-color: rgb(213, 240, 186);
+  --text-shadow: 0px 0px 1px #000;
 }
 
 * {
@@ -16,6 +17,7 @@ body {
   font-family: 'League Spartan', sans-serif;
   min-height: 100vh;
 }
+
 
 a {
   text-decoration: none;
@@ -54,15 +56,52 @@ a {
 
 .main__nav {
   display: flex;
-}
-
-.main__links {
-  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
 }
 
 .main__logo {
+  width: 62px;
+  height: 14px;
   margin: 0 auto;
+  z-index: 1;
 }
+
+/* Estilos para el menú hamburguesa */
+.main__links {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  /* Inicialmente oculto fuera del viewport */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+  background-color: var(--black);
+  transition: left 0.3s ease-in-out;
+  align-items: center;
+}
+
+.main__list {
+  list-style: none;
+}
+
+.main__link {
+  color: var(--white);
+  transition: color .3s;
+  text-shadow: var(--text-shadow);
+}
+
+.main__hamburger {
+  width: 20px;
+  height: 14px;
+  z-index: 1;
+}
+
 
 .main__controls {
   justify-self: end;
@@ -132,6 +171,7 @@ a {
   letter-spacing: 4px;
   font-weight: 700;
   transition: color .3s;
+  text-shadow: var(--text-shadow);
 }
 
 .main__cta:hover {
@@ -145,6 +185,7 @@ a {
 
 .main__cta:hover>.main__arrow path {
   fill: var(--hover-color);
+  stroke: var(--black);
   transition: fill .3s;
 }
 
@@ -203,12 +244,21 @@ a {
       "footer footer footer footer footer footer footer"
   }
 
+  .main__nav {
+    display: flex;
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 2em;
+  }
+
   .main__controls {
     grid-area: buy;
     justify-self: start;
-    width: 200px;
-    height: 70px;
+    width: 33%;
+    height: 60px;
     cursor: pointer;
+
   }
 
   .main__hamburger {
@@ -216,33 +266,27 @@ a {
   }
 
   .main__links {
-    padding: 0;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1em;
     margin-left: 10%;
-  }
-
-  .main__logo {
-    margin: 0;
-  }
-
-  .main__list {
-    list-style: none;
-  }
-
-  .main__link {
-    color: var(--white);
-    transition: color .3s;
+    position: relative;
+    left: 0;
+    height: auto;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content:flex-start;
   }
 
   .main__link:hover {
     color: var(--hover-color);
   }
 
-
-
   .footer__attribution {
     margin: 0 auto;
+  }
+
+
+  .main__link {
+    color: var(--white);
+    transition: color .3s;
+    text-shadow: var(--text-shadow);
   }
 }
