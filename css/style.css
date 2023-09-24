@@ -3,6 +3,7 @@
   --black: hsl(0, 0%, 0%);
   --white: hsl(0, 0%, 100%);
   --very-dark-gray: hsl(0, 0%, 27%);
+  --hover-color: hsl(210, 25%, 35%)
 }
 
 * {
@@ -12,7 +13,7 @@
 }
 
 body {
-  font-family: 'Spartan', sans-serif;
+  font-family: 'League Spartan', sans-serif;
   min-height: 100vh;
 }
 
@@ -48,6 +49,7 @@ a {
   background-size: cover;
   background-position: center;
   grid-area: main;
+  transition: background-image 0.5s ease;
 }
 
 .main__nav {
@@ -72,14 +74,31 @@ a {
   height: 50px;
   justify-content: space-around;
   align-items: center;
+  transition: all .8s ease-in;
 }
 
 .main__arrows {
   height: 40%;
 }
 
+.main__arrows path {
+  stroke: var(--white);
+  transition: stroke .3s;
+}
+
+.main__arrows:hover>path {
+  stroke: var(--hover-color)
+}
+
 .main__buy {
   grid-area: buy;
+}
+
+.main__buy .main__title {
+  font-weight: 700;
+  font-size: 3rem;
+  letter-spacing: -.04em;
+
 }
 
 .main__content {
@@ -111,10 +130,21 @@ a {
   text-transform: uppercase;
   letter-spacing: 4px;
   font-weight: 700;
+  transition: color .3s;
+}
+
+.main__cta:hover {
+  color: var(--hover-color);
 }
 
 .main__arrow {
   margin-left: 20px;
+}
+
+
+.main__cta:hover>.main__arrow path {
+  fill: var(--hover-color);
+  transition: fill .3s;
 }
 
 .main__bg {
@@ -128,6 +158,11 @@ a {
 
 .main__about {
   grid-area: about;
+}
+
+.main__about .main__title {
+  text-transform: uppercase;
+  letter-spacing: .2em;
 }
 
 .main__bg--second {
@@ -153,7 +188,7 @@ a {
 
 @media (min-width:768px) {
   .container {
-    width: 85%;
+    width: 80%;
     padding: 70px 0;
   }
 
@@ -170,6 +205,9 @@ a {
   .main__controls {
     grid-area: buy;
     justify-self: start;
+    width: 200px;
+    height: 70px;
+    cursor: pointer;
   }
 
   .main__hamburger {
@@ -194,7 +232,14 @@ a {
 
   .main__link {
     color: var(--white);
+    transition: color .3s;
   }
+
+  .main__link:hover {
+    color: var(--hover-color);
+  }
+
+
 
   .footer__attribution {
     margin: 0 auto;
