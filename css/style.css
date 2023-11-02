@@ -3,7 +3,6 @@
   --black: hsl(0, 0%, 0%);
   --white: hsl(0, 0%, 100%);
   --very-dark-gray: hsl(0, 0%, 27%);
-  --hover-color: rgb(213, 240, 186);
 }
 
 * {
@@ -94,7 +93,8 @@ a {
 .main__link {
   color: var(--black);
   transition: color .3s;
-  font-weight: 700;
+  font-weight: 500;
+  position: relative;
 }
 
 .main__hamburger {
@@ -103,12 +103,11 @@ a {
   z-index: 1;
 }
 
-
 .main__controls {
   justify-self: end;
   align-self: end;
-  background-color: var(--black);
   grid-area: main;
+  background-color: var(--black);
   display: flex;
   width: 100px;
   height: 50px;
@@ -117,18 +116,24 @@ a {
   transition: all .8s ease-in;
 }
 
+.main__controls button {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.main__controls button:hover{
+  background-color:var(--very-dark-gray);
+}
+
 .main__arrows {
-  height: 40%;
+  height: 20px;
+  cursor: pointer;
 }
 
 .main__arrows path {
-  stroke: var(--white);
   transition: all .3s;
-}
-
-.main__arrows:hover>path {
-  transform: scale(1.1);
-  stroke: var(--hover-color)
 }
 
 .main__buy {
@@ -139,7 +144,6 @@ a {
   font-weight: 700;
   font-size: 3rem;
   letter-spacing: -.04em;
-
 }
 
 .main__content {
@@ -169,13 +173,13 @@ a {
   text-decoration: none;
   color: var(--very-dark-gray);
   text-transform: uppercase;
-  letter-spacing: 4px;
-  font-weight: 700;
+  letter-spacing: 10px;
+  font-weight: 500;
   transition: color .3s;
 }
 
 .main__cta:hover {
-  color: var(--hover-color);
+  color: var(--dark-gray);
 }
 
 .main__arrow {
@@ -184,8 +188,7 @@ a {
 
 
 .main__cta:hover>.main__arrow path {
-  fill: var(--hover-color);
-  stroke: var(--black);
+  fill: var(--dark-gray);
   transition: fill .3s;
 }
 
@@ -252,19 +255,6 @@ a {
     padding: 2em;
   }
 
-  .main__controls {
-    grid-area: buy;
-    justify-self: start;
-    width: 33%;
-    height: 60px;
-    cursor: pointer;
-
-  }
-
-  .main__hamburger {
-    display: none;
-  }
-
   .main__links {
     margin-left: 10%;
     position: relative;
@@ -275,17 +265,40 @@ a {
     justify-content: flex-start;
   }
 
-  .main__link:hover {
-    color: var(--hover-color);
+  .main__link {
+    transition: color .3s ease-in-out;
+    color: var(--white);
+
+  }
+
+  .main__link::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--white);
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+  }
+
+  .main__link:hover::before {
+    transform: scaleX(1);
+  }
+
+  .main__controls {
+    grid-area: buy;
+    justify-self: start;
+    width: 33%;
+    height: 60px;
+    cursor: pointer;
+  }
+
+  .main__hamburger {
+    display: none;
   }
 
   .footer__attribution {
     margin: 0 auto;
-  }
-
-
-  .main__link {
-    color: var(--white);
-    transition: color .3s;
   }
 }
